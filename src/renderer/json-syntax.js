@@ -1,5 +1,5 @@
 
-const hl = require('../../node_modules/highlight.js/lib/highlight');
+const hl = require('../../node_modules/highlight.js/lib/index');
 hl.registerLanguage('json', require('../../node_modules/highlight.js/lib/languages/json'));
 hl.registerLanguage('json', require('../../node_modules/highlight.js/lib/languages/haml'));
 
