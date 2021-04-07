@@ -194,11 +194,20 @@ const RawExec = () => ({
             } else {
                 if (typeof Lbry[this.commandName] === 'function') {
 
-                    Lbry[this.commandName](...this.parseParams(this.commandParams)).then(result => {
-                        this.execHTML = jsonHighlight(result);
-                    }).catch(e => {
-                        this.execHTML = jsonHighlight(e);
-                    });
+                    try { // Assume default is a promise
+                        Lbry[this.commandName](...this.parseParams(this.commandParams)).then(result => {
+                            this.execHTML = jsonHighlight(result);
+                        }).catch(e => {
+                            this.execHTML = jsonHighlight(e);
+                        });
+                    } catch (error) {
+                        try { // fallback to normal function
+                            this.execHTML = jsonHighlight(Lbry[this.commandName](...this.parseParams(this.commandParams)));
+                        } catch (err) { // handle error to prevent side effects
+                            this.execHTML = jsonHighlight({error:`There was an error executing ${this.commandName} !`})
+                        }
+                    }
+
                 } else {
                     this.execHTML = jsonHighlight(Lbry[this.commandName]);
                 }
