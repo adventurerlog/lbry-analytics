@@ -1,0 +1,28 @@
+
+  #claim {
+    width: 1000px;
+    height: 500px;
+    border:1px solid #ccc;
+    overflow: auto;
+  }
+  pre { padding: 5px; margin: 5px; }
+  .string { color: green; }
+  .number { color: darkorange; }
+  .boolean { color: blue; }
+  .null { color: magenta; }
+  .key { color: red; }
+
+  #help {
+    border: 1px solid #ccc;
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 200px;
+  }
+  #help pre {
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+  div.line{
+    display: -webkit-inline-box;
+  }

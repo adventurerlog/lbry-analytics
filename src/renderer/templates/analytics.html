@@ -1,0 +1,68 @@
+<h3>Easy as </h3>
+<div class="row">
+    <div class="column">
+        <label for="channels">1. Write a / your channel name:</label>
+        <input type="text" placeholder="Channel name => @ThisIsSparta" v-model="channelName" />
+
+    </div>
+    <div class="column">
+        <label for="channels">2. Have Auth Token:</label>
+        <input type="password" v-model="token" placeholder="See the Token section on Home" />
+    </div>
+    <div class="column">
+        <label for="channels">3. Show Table:</label>
+        <button type="text" v-on:click="loadTable()" >Show</button>
+    </div>
+</div><pre><code> Total Views:{{totalViews}}</code></pre>
+
+<div v-if="streamsNotFound.status && !table.show">
+    <p style="text-align:center"><b>{{streamsNotFound.text}}</b></p>
+</div>
+<table v-if="table.show">
+    <thead>
+      <tr>
+        <th v-for="header in table.headers" >{{header}}</th>
+      </tr>
+    </thead>
+    <tbody v-if="streams.length">
+      <tr v-for="stream in streams">
+        <td><a target="_self" :href="stream.canonical_url">
+            <img :src="stream.value.thumbnail.url" alt="{{stream.value.title}}" width="100" height="45" srcset="">
+        </a></td>
+        <td>{{stream.value.release_time}}</td>
+        <td>{{stream.value.tags.length}}</td>
+        <td>{{stream.comments_len}}</td>
+        <td>{{stream.views}}</td>
+        <td>{{stream.meta.effective_amount}}</td>
+        <td>{{stream.meta.support_amount}}</td>
+        <td>{{stream.meta.trending_global.toFixed(4)}}</td>
+        <td>{{stream.meta.trending_group.toFixed(4)}}</td>
+        <td>{{stream.meta.trending_local.toFixed(4)}}</td>
+        <td>{{stream.meta.trending_mixed.toFixed(4)}}</td>
+      </tr>
+     
+      <tr v-if="streamsNotFound.status">
+        <td colspan="{{table.headers.length}}" style="text-align:center"><b>{{streamsNotFound.text}}</b></td>
+     </tr>
+    </tbody>
+    <tbody v-if="!streams.length">
+      <tr v-if="streamsNotFound.status">
+        <td colspan="{{table.headers.length}}" style="text-align:center"><b>{{streamsNotFound.text}}</b></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <table v-if="table.show">
+    <thead>
+      <tr> Name </tr>
+      <tr>Claim ID</tr>
+      <tr>Support Amount</tr>
+    </thead>
+  <tbody v-if="streams.length">
+    <tr v-for="stream in streams">
+      <td>{{stream.name}}</td>  
+      <td>{{stream.claim_id}}</td>
+      <td>{{stream.meta.support_amount}}</td>  
+    </tr>
+</tbody>
+  </table>

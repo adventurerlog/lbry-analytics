@@ -1,0 +1,11 @@
+<div class="row menu">
+    <button class="column" v-on:click="changeTab(tabs.home)" >Home</button>
+    <button class="column" v-on:click="changeTab(tabs.analytics)" >Data</button>
+    <button class="column" v-on:click="changeTab(tabs.rawExec)">Raw (Hardcore mode)</button>
+</div>
+
+<style>
+    .menu .column {
+        margin-right: 30px;
+    }
+</style>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>LBRY Analytics</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+    <link rel="stylesheet" href="../renderer/styles/index.css">
+    <link rel="stylesheet" href="../../node_modules/highlight.js/styles/default.css">
+    
+  </head>
+
+  <body id="app"> 
+    <div class="container">
+      
+        <div class="column-100">
+
+          <menu></menu>
+        </div>
+        <h1></h1>
+        <div class="column-100">
+
+          <home v-if="currentTab === 'home'">
+            <p>Loading...</p>
+          </home>
+          <analytics v-if="currentTab === 'analytics'">
+            <p>Loading...</p>
+          </analytics>
+          <raw-exec v-if="currentTab === 'raw-exec'">
+            <p>Loading...</p>
+          </raw-exec>
+        </div>
+      </div>   
+  </body>
+  <script>
+    require("../renderer/index.js");
+  </script>
+</html>
