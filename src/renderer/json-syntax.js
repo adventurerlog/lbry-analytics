@@ -4,7 +4,7 @@ hl.registerLanguage('json', require('../../node_modules/highlight.js/lib/languag
 hl.registerLanguage('json', require('../../node_modules/highlight.js/lib/languages/haml'));
 
 const jsonHL = (json) => {
-  return hl.highlight('json', JSON.stringify(json, undefined, 2));
+  return hl.highlight( JSON.stringify(json, undefined, 2),{language: "json", ignoreIllegals: true });
 }
 
 module.exports = jsonHL;
