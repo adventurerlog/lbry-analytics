@@ -50,9 +50,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/adam-dorin/lbry-analytics.git"
+    "url": "git+https://github.com/adventurerlog/lbry-analytics.git"
   },
-  "author": "https://gitlab.com/adam-dorin/lbry-analytics/-/project_members",
+  "author": "https://github.com/adventurerlog",
   "license": "MIT",
-  "homepage": "https://gitlab.com/adam-dorin/lbry-analytics"
+  "homepage": "https://github.com/adventurerlog/lbry-analytics"
 }
