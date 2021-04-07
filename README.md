@@ -8,6 +8,9 @@ The goal is to provide analytics dashboards to creators, analysys tools for inte
 ```
 git clone https://gitlab.com/adam-dorin/lbry-analytics
 cd lbry-analytics
+# If you don't have yarn installed else ignore
+npm install --global yarn
+yarn
 npm install
 npm run dev
 ```
