@@ -171,15 +171,30 @@ const RawExec = () =>({
             });
         },
         methods:{
+            parseParams: function(commandParams){
+                let cp = commandParams
+                let commands = cp.split(',').map(c=>{
+                    let com;
+                    try{
+                        com = JSON.parse(c)
+                    }catch(e){
+                        com = c
+                    }
+                    return com;
+                })
+                if(!cp){
+                    commands = [];
+                }
+                return commands;
+            },
             runCommand: function(){
                 if(!this.commandName){
                     alert('You must input a command!');
                     return;
                 } else {
                     if(typeof Lbry[this.commandName] === 'function'){
-                        Lbry[this.commandName].apply(this.commandParams.split(',')).then(result=>{
-                            // console.log(`ran ${this.commandName} with ${this.commandParams}`);
-                            // console.log(result);
+                       
+                        Lbry[this.commandName](...this.parseParams(this.commandParams)).then(result=>{
                             this.execHTML = jsonHighlight(result);
                         }).catch(e=>{
                             this.execHTML = jsonHighlight(e);
